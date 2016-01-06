@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Id": 1, "nom": "Bibliothèque" }, "geometry": { "type": "Point", "coordinates": [ 3.519382745403229, 50.359895576071096 ] } }
+]
+}

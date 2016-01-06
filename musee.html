@@ -1,0 +1,152 @@
+﻿<!DOCTYPE  html>
+<html>
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+html {
+height: 100%;
+}
+
+body {
+height: 100%;
+margin: 0px;
+padding: 0px;
+}
+
+#map_canvas {
+height: 100%;
+width: 100%;
+}
+
+#mapCopyright {
+font-size: 10px;
+font-family: Arial, sans-serif;
+margin: 0.1;
+padding: 1px 3px 1px 3px;
+white-space: nowrap;
+background-color: white;
+opacity: 0.6;
+}
+
+.gm-style-iw + div {
+display: none;
+}
+</style>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js" ></script>
+<script type="text/javascript">
+function initialize() {
+
+	// import de la carte MapQuest
+	
+	mapQuestType = new google.maps.ImageMapType({
+		getTileUrl: function(coord, zoom) {
+			return "http://otile1.mqcdn.com/tiles/1.0.0/map/" +
+			zoom + "/" + coord.x + "/" + coord.y + ".png";
+		},
+		tileSize: new google.maps.Size(256, 256),
+		isPng: true,
+		alt: "MapQuest layer (données OSM)",
+		name: "Plan MapQuest",
+		maxZoom: 20
+	});
+	
+	// import du raster PPige
+	
+	ppige2012Type = new google.maps.ImageMapType({
+		getTileUrl: function (coord, zoom) {
+			var proj = map.getProjection();
+			var zfactor = Math.pow(2, zoom);
+			// get Long Lat coordinates
+			var top = proj.fromPointToLatLng(new google.maps.Point(coord.x * 256 / zfactor, coord.y * 256 / zfactor));
+			var bot = proj.fromPointToLatLng(new google.maps.Point((coord.x + 1) * 256 / zfactor, (coord.y + 1) * 256 / zfactor));
+
+			//create the Bounding box string
+			var bbox =     (top.lng()) + "," +
+						   (bot.lat()) + "," +
+						   (bot.lng()) + "," +
+						   (top.lat());
+
+			//base WMS URL
+			var url = "http://www.ppige-npdc.fr/cgi-bin/mapserv?map=/var/www/mapcache/map/ortho2013.map&";
+			url += "&REQUEST=GetMap"; //WMS operation
+			url += "&SERVICE=WMS";    //WMS service
+			url += "&VERSION=1.1.1";  //WMS version  
+			url += "&LAYERS=orthoRGB_20cm_2013"; //WMS layers
+			url += "&FORMAT=image/png" ; //WMS format
+			url += "&BGCOLOR=0xFFFFFF";  
+			url += "&TRANSPARENT=TRUE";
+			url += "&SRS=EPSG:4326";     //set WGS84 
+			url += "&BBOX=" + bbox;      // set bounding box
+			url += "&WIDTH=256";         //tile size in google
+			url += "&HEIGHT=256";
+			return url;                 // return URL for the tile
+
+		},
+		tileSize: new google.maps.Size(256, 256),
+		isPng: true,
+		alt: "Photo aérienne PPige 2012",
+		name: "Photo aérienne PPige",
+		maxZoom: 20
+	});
+
+	// options et affichage de la carte
+	
+	var latlng= new google.maps.LatLng(50.35782064981241, 3.5315120410919176);
+	var myOptions = {
+		zoom: 16,
+		minZoom: 13,
+		maxZoom: 18,
+		center: latlng,
+		disableDefaultUI: true,
+		mapTypeControl: true,
+		mapTypeControlOptions: {mapTypeIds: ['Plan MapQuest','Photo aérienne PPige'],style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
+		streetViewControl: true,
+		streetViewControlOptions: {position: google.maps.ControlPosition.RIGHT_TOP},
+		scaleControl: true,
+		zoomControl: true,
+		zoomControlOptions: {position: google.maps.ControlPosition.RIGHT_TOP},
+		mapTypeId: 'Plan MapQuest'
+	};
+	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	map.mapTypes.set('Photo aérienne PPige',ppige2012Type);
+	map.mapTypes.set('Plan MapQuest',mapQuestType);
+	map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(document.getElementById("mapCopyright"));
+
+	// import data
+	
+	data1 =new google.maps.Data();
+	data1.loadGeoJson('musee.geojson');
+	data1.setMap(map);
+	
+	// setStyle & title
+	
+	data1.setStyle(function(feature){
+		return {
+			title: feature.getProperty('nom'),
+			icon: {url: "punaiseRouge.png", size: new google.maps.Size(32,39), scaledSize: new google.maps.Size(32,39), anchor: new google.maps.Point(8,36)}
+		};
+	});
+	
+	// Gestion des copyright
+	
+	google.maps.event.addListener(map, "maptypeid_changed", onMapTypeIdChanged);
+	onMapTypeIdChanged();
+	
+	function onMapTypeIdChanged(event){
+		newMapType = map.getMapTypeId();
+		copyrightDiv = document.getElementById("mapCopyright");
+		if (newMapType == 'Photo aérienne PPige'){
+			copyrightDiv.innerHTML = 'Photo aérienne (2012) : © <a href="http://www.ppige-npdc.fr/portail/" target="blank">PPige</a>';
+		} else if (newMapType == 'Plan MapQuest'){
+			copyrightDiv.innerHTML = 'Rendu cartographique : © <a href="http://www.mapquest.com/" target="blank">MapQuest</a>, Données : © Les contributeurs d\'<a href="http://www.openstreetmap.org" target="blank">OpenStreetMap</a>';
+		};
+	};
+};
+</script>
+</head>
+<body onload="initialize()">
+<div id="map_canvas"></div>
+<div id="mapCopyright"></div>
+</body>
+</html>

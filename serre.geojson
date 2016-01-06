@@ -1,0 +1,7 @@
+{
+"type": "FeatureCollection",
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Id": 1, "nom": "Serre Numérique" }, "geometry": { "type": "Point", "coordinates": [ 3.520633237989724, 50.372969167667073 ] } }
+]
+}

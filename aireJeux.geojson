@@ -1,0 +1,32 @@
+{
+"type": "FeatureCollection",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+                                                                                
+"features": [
+{ "type": "Feature", "properties": { "Id": null, "nom": "Faubourg de Lille" }, "geometry": { "type": "Point", "coordinates": [ 3.516548943722536, 50.368432655480248 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Place des Acacias" }, "geometry": { "type": "Point", "coordinates": [ 3.509702646392174, 50.359226639197033 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Site du Vignoble" }, "geometry": { "type": "Point", "coordinates": [ 3.50727196403215, 50.35013146407556 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Résidence Dampierre" }, "geometry": { "type": "Point", "coordinates": [ 3.503173459622013, 50.354362416530108 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Résidence Piérard" }, "geometry": { "type": "Point", "coordinates": [ 3.53903761691751, 50.358755698877154 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Parc de la Rhônelle" }, "geometry": { "type": "Point", "coordinates": [ 3.52600523298096, 50.352079247478869 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Parc Désandrouin" }, "geometry": { "type": "Point", "coordinates": [ 3.497707602900602, 50.359725487296274 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Cité des Agglomérés" }, "geometry": { "type": "Point", "coordinates": [ 3.488515884069658, 50.365210323532338 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Jardin des Floralies" }, "geometry": { "type": "Point", "coordinates": [ 3.534971833230286, 50.361725121313221 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Près de la piscine" }, "geometry": { "type": "Point", "coordinates": [ 3.535420574588998, 50.362034291279535 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Place des Tilleuls" }, "geometry": { "type": "Point", "coordinates": [ 3.521563441431983, 50.344849402590789 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Square de la Dodenne" }, "geometry": { "type": "Point", "coordinates": [ 3.527476356735274, 50.35377666255102 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "L'oiseau Bleu" }, "geometry": { "type": "Point", "coordinates": [ 3.514645345485179, 50.369307792460475 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Place de la Libération" }, "geometry": { "type": "Point", "coordinates": [ 3.53895516069112, 50.360384407262536 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Espace Fugaldi" }, "geometry": { "type": "Point", "coordinates": [ 3.503350525486407, 50.363214653153683 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Résidence Verley" }, "geometry": { "type": "Point", "coordinates": [ 3.5127456737333, 50.368475828326929 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Espace Tinchon" }, "geometry": { "type": "Point", "coordinates": [ 3.490877011518755, 50.361756610939011 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Enclos Isabelle de Hainaut" }, "geometry": { "type": "Point", "coordinates": [ 3.488501673926639, 50.355202501576599 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Faubourg de Cambrai" }, "geometry": { "type": "Point", "coordinates": [ 3.513510029847644, 50.341855774735883 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Maison du Citoyen" }, "geometry": { "type": "Point", "coordinates": [ 3.488002075213947, 50.352514940634173 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Coron des 120" }, "geometry": { "type": "Point", "coordinates": [ 3.494178252114346, 50.364876842976351 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Dutemple" }, "geometry": { "type": "Point", "coordinates": [ 3.480910465941774, 50.361382551004944 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Faubourg de Cambrai" }, "geometry": { "type": "Point", "coordinates": [ 3.511377012589239, 50.341451964189417 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Rue Louis Cellier" }, "geometry": { "type": "Point", "coordinates": [ 3.525458516425611, 50.353807203059439 ] } },
+{ "type": "Feature", "properties": { "Id": null, "nom": "Rue d'Alsace" }, "geometry": { "type": "Point", "coordinates": [ 3.513731408917945, 50.350934400517197 ] } }
+]
+}
