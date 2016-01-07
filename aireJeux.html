@@ -113,6 +113,13 @@ function initialize() {
 	map.mapTypes.set('Plan MapQuest',mapQuestType);
 	map.controls[google.maps.ControlPosition.BOTTOM_RIGHT].push(document.getElementById("mapCopyright"));
 
+	// import du masque des communes voisines
+	
+	dataCom = new google.maps.Data();
+	dataCom.loadGeoJson('com.geojson');
+	dataCom.setStyle({fillOpacity:0.6,strokeWeight:0,clickable:false});
+	dataCom.setMap(map);	
+	
 	// import data
 	
 	data1 =new google.maps.Data();
@@ -124,7 +131,7 @@ function initialize() {
 	data1.setStyle(function(feature){
 		return {
 			title: feature.getProperty('nom'),
-			icon: {url: "punaiseRouge.png", size: new google.maps.Size(32,39), scaledSize: new google.maps.Size(32,39), anchor: new google.maps.Point(8,36)}
+			icon: {url: "punaiseBleue.png", size: new google.maps.Size(32,39), scaledSize: new google.maps.Size(32,39), anchor: new google.maps.Point(8,36)}
 		};
 	});
 	
