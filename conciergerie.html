@@ -131,7 +131,8 @@ function initialize() {
 	data1.setStyle(function(feature){
 		return {
 			title: feature.getProperty('nom'),
-			icon: {url: "punaiseBleue.png", size: new google.maps.Size(32,39), scaledSize: new google.maps.Size(32,39), anchor: new google.maps.Point(8,36)}
+			icon: {url: "punaiseBleue.png", size: new google.maps.Size(32,39), scaledSize: new google.maps.Size(32,39), anchor: new google.maps.Point(8,36)},
+			optimized: false // contournement du bug tooltips sous firefox : https://code.google.com/p/gmaps-api-issues/issues/detail?id=7136
 		};
 	});
 	

@@ -135,7 +135,8 @@ function initialize() {
 			fillOpacity: 0.3,
 			strokeColor: '#2d367f',
 			strokeWeight: 4,
-			strokeOpacity: 1
+			strokeOpacity: 1,
+			optimized: false // contournement du bug tooltips sous firefox : https://code.google.com/p/gmaps-api-issues/issues/detail?id=7136
 		};
 	});
 
@@ -143,7 +144,7 @@ function initialize() {
 	data1.addListener('mouseout',mouseOut);
 	
 	function mouseOver(event){
-		infoWindow = new google.maps.InfoWindow({ content: event.feature.getProperty('nom'), position: event.latLng, pixelOffset: {width:0, height:-15}});
+		infoWindow = new google.maps.InfoWindow({ content: event.feature.getProperty('nom'), position: event.latLng, pixelOffset: {width:0, height:-15}, disableAutoPan: true});
 		infoWindow.open(map)
 	};
 	
